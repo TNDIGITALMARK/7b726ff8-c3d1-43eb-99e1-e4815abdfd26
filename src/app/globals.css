@@ -1,33 +1,33 @@
 @import "tailwindcss";
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here.
 All colors MUST be HSL.
 */
 
 :root {
-  /* Mom's Spaghetti Italian Restaurant Theme */
-  --background: 42 78% 95%; /* Warm cream background */
-  --foreground: 12 16% 25%; /* Dark brown text */
+  /* Elegant Flora Boutique Theme */
+  --background: 120 20% 98%; /* Soft white with green undertone */
+  --foreground: 160 15% 15%; /* Deep forest green text */
 
-  --card: 0 0% 100%; /* White cards */
-  --card-foreground: 12 16% 25%;
+  --card: 0 0% 100%; /* Pure white cards */
+  --card-foreground: 160 15% 15%;
 
   --popover: 0 0% 100%;
-  --popover-foreground: 12 16% 25%;
+  --popover-foreground: 160 15% 15%;
 
-  /* Burgundy/deep red primary from design reference */
-  --primary: 0 60% 30%; /* Deep burgundy red */
-  --primary-foreground: 42 78% 95%; /* Cream text on burgundy */
+  /* Deep forest green primary for elegance */
+  --primary: 160 40% 25%; /* Deep forest green */
+  --primary-foreground: 120 20% 98%; /* Soft white text on green */
 
-  --secondary: 42 65% 85%; /* Light cream */
-  --secondary-foreground: 12 16% 25%;
+  --secondary: 120 30% 95%; /* Very light sage green */
+  --secondary-foreground: 160 15% 15%;
 
-  --muted: 42 50% 90%;
-  --muted-foreground: 12 16% 60%;
+  --muted: 120 20% 92%;
+  --muted-foreground: 160 10% 50%;
 
-  /* Italian green accent */
-  --accent: 120 25% 35%; /* Italian green */
-  --accent-foreground: 42 78% 95%;
+  /* Soft rose accent for floral touch */
+  --accent: 340 30% 70%; /* Soft dusty rose */
+  --accent-foreground: 160 15% 15%;
 
   --destructive: 0 84.2% 60.2%;
   --destructive-foreground: 210 40% 98%;
@@ -166,32 +166,41 @@ body {
   font-family: var(--font-inter), sans-serif;
 }
 
-/* Mom's Spaghetti Custom Styles */
+/* Elegant Flora Boutique Custom Styles */
 .font-script {
   font-family: var(--font-dancing-script), cursive;
 }
 
-.mom-burgundy {
-  background-color: hsl(0 60% 30%);
-  color: hsl(42 78% 95%);
+.flora-green {
+  background-color: hsl(160 40% 25%);
+  color: hsl(120 20% 98%);
 }
 
-.mom-cream {
-  background-color: hsl(42 78% 95%);
-  color: hsl(12 16% 25%);
+.flora-cream {
+  background-color: hsl(120 20% 98%);
+  color: hsl(160 15% 15%);
 }
 
-.mom-green {
-  background-color: hsl(120 25% 35%);
-  color: hsl(42 78% 95%);
+.flora-rose {
+  background-color: hsl(340 30% 70%);
+  color: hsl(160 15% 15%);
 }
 
-.text-burgundy {
-  color: hsl(0 60% 30%);
+.flora-sage {
+  background-color: hsl(120 30% 95%);
+  color: hsl(160 15% 15%);
 }
 
-.text-warm-brown {
-  color: hsl(12 16% 25%);
+.text-forest {
+  color: hsl(160 40% 25%);
+}
+
+.text-sage {
+  color: hsl(160 15% 15%);
+}
+
+.text-rose {
+  color: hsl(340 30% 50%);
 }
 
 .hero-overlay {

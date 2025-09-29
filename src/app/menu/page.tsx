@@ -8,18 +8,18 @@ import Navigation from '@/components/navigation';
 import Footer from '@/components/footer';
 import { Plus, Minus, ShoppingCart } from 'lucide-react';
 
-interface MenuItem {
+interface ArrangementItem {
   id: number;
   name: string;
   description: string;
   price: number;
   category: string;
   image: string;
-  vegetarian?: boolean;
-  spicy?: boolean;
+  seasonal?: boolean;
+  premium?: boolean;
 }
 
-interface CartItem extends MenuItem {
+interface CartItem extends ArrangementItem {
   quantity: number;
 }
 
@@ -27,127 +27,125 @@ export default function MenuPage() {
   const [cart, setCart] = useState<CartItem[]>([]);
   const [selectedCategory, setSelectedCategory] = useState('All');
 
-  const menuItems: MenuItem[] = [
-    // Pasta Classics
+  const arrangementItems: ArrangementItem[] = [
+    // Bridal & Wedding
     {
       id: 1,
-      name: 'Classic Spaghetti Marinara',
-      description: 'Traditional spaghetti with our signature marinara sauce, fresh basil, and parmesan cheese',
-      price: 16.95,
-      category: 'Pasta Classics',
-      image: '/api/placeholder/300/200'
+      name: 'Classic Bridal Bouquet',
+      description: 'Elegant white roses with eucalyptus and baby\'s breath, perfect for your special day',
+      price: 85.00,
+      category: 'Bridal & Wedding',
+      image: '/images/rose-bouquet.png',
+      premium: true
     },
     {
       id: 2,
-      name: 'Fettuccine Alfredo',
-      description: 'Creamy alfredo sauce with fresh herbs over tender fettuccine pasta',
-      price: 18.95,
-      category: 'Pasta Classics',
-      image: '/api/placeholder/300/200',
-      vegetarian: true
+      name: 'Wedding Centerpiece',
+      description: 'Low elegant arrangement with white lilies and greenery for reception tables',
+      price: 45.00,
+      category: 'Bridal & Wedding',
+      image: '/images/lily-arrangement.png',
+      premium: true
     },
     {
       id: 3,
-      name: 'Penne Arrabbiata',
-      description: 'Spicy tomato sauce with garlic, red peppers, and fresh herbs',
-      price: 17.95,
-      category: 'Pasta Classics',
-      image: '/api/placeholder/300/200',
-      spicy: true,
-      vegetarian: true
-    },
-    {
-      id: 4,
-      name: 'Lasagna Della Casa',
-      description: 'Layers of pasta, meat sauce, ricotta, mozzarella, and parmesan cheese',
-      price: 21.95,
-      category: 'Pasta Classics',
-      image: '/api/placeholder/300/200'
+      name: 'Bridesmaids Bouquet',
+      description: 'Smaller complementary bouquet with soft pastel flowers',
+      price: 35.00,
+      category: 'Bridal & Wedding',
+      image: '/images/spring-garden.png'
     },
 
-    // Specialty Dishes
+    // Seasonal Arrangements
+    {
+      id: 4,
+      name: 'Spring Garden Mix',
+      description: 'Fresh seasonal blooms including tulips, daffodils, and hyacinths',
+      price: 42.00,
+      category: 'Seasonal Arrangements',
+      image: '/images/spring-garden.png',
+      seasonal: true
+    },
     {
       id: 5,
-      name: 'Chicken Parmigiana',
-      description: 'Breaded chicken breast with marinara sauce and melted mozzarella, served with spaghetti',
-      price: 23.95,
-      category: 'Specialty Dishes',
-      image: '/api/placeholder/300/200'
+      name: 'Summer Wildflower',
+      description: 'Natural wildflowers with sunflowers, lavender, and daisies',
+      price: 38.00,
+      category: 'Seasonal Arrangements',
+      image: '/images/wildflower-medley.png',
+      seasonal: true
     },
     {
       id: 6,
-      name: 'Shrimp Scampi',
-      description: 'Sautéed shrimp in white wine, garlic, and butter sauce over linguine',
-      price: 26.95,
-      category: 'Specialty Dishes',
-      image: '/api/placeholder/300/200'
-    },
-    {
-      id: 7,
-      name: 'Eggplant Parmigiana',
-      description: 'Layers of breaded eggplant with marinara sauce and melted cheese',
-      price: 19.95,
-      category: 'Specialty Dishes',
-      image: '/api/placeholder/300/200',
-      vegetarian: true
+      name: 'Autumn Harvest',
+      description: 'Rich oranges and deep reds with seasonal foliage and berries',
+      price: 48.00,
+      category: 'Seasonal Arrangements',
+      image: '/images/rose-bouquet.png',
+      seasonal: true
     },
 
-    // Appetizers
+    // Classic Bouquets
+    {
+      id: 7,
+      name: 'Romantic Rose Bouquet',
+      description: 'Dozen red roses with eucalyptus and baby\'s breath in elegant wrapping',
+      price: 65.00,
+      category: 'Classic Bouquets',
+      image: '/images/rose-bouquet.png'
+    },
     {
       id: 8,
-      name: 'Bruschetta',
-      description: 'Toasted bread with fresh tomatoes, garlic, basil, and olive oil',
-      price: 9.95,
-      category: 'Appetizers',
-      image: '/api/placeholder/300/200',
-      vegetarian: true
+      name: 'Elegant Lily Arrangement',
+      description: 'Sophisticated white lilies with lush greenery in a tall vase',
+      price: 55.00,
+      category: 'Classic Bouquets',
+      image: '/images/lily-arrangement.png'
     },
     {
       id: 9,
-      name: 'Antipasto Platter',
-      description: 'Selection of Italian meats, cheeses, olives, and roasted peppers',
-      price: 16.95,
-      category: 'Appetizers',
-      image: '/api/placeholder/300/200'
-    },
-    {
-      id: 10,
-      name: 'Mozzarella Sticks',
-      description: 'Golden fried mozzarella served with marinara sauce',
-      price: 11.95,
-      category: 'Appetizers',
-      image: '/api/placeholder/300/200',
-      vegetarian: true
+      name: 'Mixed Spring Bouquet',
+      description: 'Cheerful mix of seasonal flowers in soft pastel colors',
+      price: 40.00,
+      category: 'Classic Bouquets',
+      image: '/images/spring-garden.png'
     },
 
-    // Desserts
+    // Corporate & Events
+    {
+      id: 10,
+      name: 'Corporate Lobby Display',
+      description: 'Large statement arrangement for office spaces and corporate events',
+      price: 125.00,
+      category: 'Corporate & Events',
+      image: '/images/lily-arrangement.png',
+      premium: true
+    },
     {
       id: 11,
-      name: 'Tiramisu',
-      description: 'Traditional Italian dessert with coffee-soaked ladyfingers and mascarpone',
-      price: 7.95,
-      category: 'Desserts',
-      image: '/api/placeholder/300/200',
-      vegetarian: true
+      name: 'Event Centerpiece',
+      description: 'Medium-sized elegant arrangement perfect for dining tables',
+      price: 55.00,
+      category: 'Corporate & Events',
+      image: '/images/spring-garden.png'
     },
     {
       id: 12,
-      name: 'Cannoli',
-      description: 'Crispy shells filled with sweet ricotta and chocolate chips',
-      price: 6.95,
-      category: 'Desserts',
-      image: '/api/placeholder/300/200',
-      vegetarian: true
+      name: 'Reception Arrangement',
+      description: 'Welcoming floral display for entrance areas and reception desks',
+      price: 75.00,
+      category: 'Corporate & Events',
+      image: '/images/wildflower-medley.png'
     }
   ];
 
-  const categories = ['All', 'Appetizers', 'Pasta Classics', 'Specialty Dishes', 'Desserts'];
+  const categories = ['All', 'Classic Bouquets', 'Bridal & Wedding', 'Seasonal Arrangements', 'Corporate & Events'];
 
   const filteredItems = selectedCategory === 'All'
-    ? menuItems
-    : menuItems.filter(item => item.category === selectedCategory);
+    ? arrangementItems
+    : arrangementItems.filter(item => item.category === selectedCategory);
 
-  const addToCart = (item: MenuItem) => {
+  const addToCart = (item: ArrangementItem) => {
     setCart(prevCart => {
       const existingItem = prevCart.find(cartItem => cartItem.id === item.id);
       if (existingItem) {
@@ -186,18 +184,18 @@ export default function MenuPage() {
   const cartItemsCount = cart.reduce((total, item) => total + item.quantity, 0);
 
   return (
-    <div className="min-h-screen mom-cream">
+    <div className="min-h-screen flora-cream">
       <Navigation />
 
       {/* Header */}
       <section className="py-16 bg-white shadow-sm">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-6xl font-script text-burgundy mb-4">
-            Our Menu
+          <h1 className="text-4xl md:text-6xl font-script text-forest mb-4">
+            Our Arrangements
           </h1>
-          <p className="text-xl text-warm-brown max-w-2xl mx-auto">
-            Authentic Italian dishes prepared with love and the finest ingredients,
-            just like Nonna used to make.
+          <p className="text-xl text-sage max-w-2xl mx-auto">
+            Handcrafted floral arrangements created with the finest blooms
+            and attention to every beautiful detail.
           </p>
         </div>
       </section>
@@ -211,8 +209,8 @@ export default function MenuPage() {
               variant={selectedCategory === category ? "default" : "outline"}
               onClick={() => setSelectedCategory(category)}
               className={selectedCategory === category
-                ? "mom-burgundy hover:bg-red-800"
-                : "border-burgundy text-burgundy hover:mom-burgundy hover:text-white"
+                ? "flora-green hover:bg-green-800"
+                : "border-forest text-forest hover:flora-green hover:text-white"
               }
             >
               {category}
@@ -222,9 +220,9 @@ export default function MenuPage() {
 
         {/* Shopping Cart Summary */}
         {cartItemsCount > 0 && (
-          <Card className="mb-8 bg-white border-burgundy">
+          <Card className="mb-8 bg-white border-forest">
             <CardHeader>
-              <CardTitle className="flex items-center text-burgundy">
+              <CardTitle className="flex items-center text-forest">
                 <ShoppingCart className="mr-2" size={24} />
                 Your Order ({cartItemsCount} items)
               </CardTitle>
@@ -233,21 +231,21 @@ export default function MenuPage() {
               <div className="space-y-2">
                 {cart.map((item) => (
                   <div key={item.id} className="flex justify-between items-center">
-                    <span className="text-warm-brown">
+                    <span className="text-sage">
                       {item.name} x {item.quantity}
                     </span>
-                    <span className="text-burgundy font-semibold">
+                    <span className="text-forest font-semibold">
                       ${(item.price * item.quantity).toFixed(2)}
                     </span>
                   </div>
                 ))}
                 <div className="border-t pt-2 mt-2">
                   <div className="flex justify-between items-center text-lg font-bold">
-                    <span className="text-burgundy">Total:</span>
-                    <span className="text-burgundy">${cartTotal.toFixed(2)}</span>
+                    <span className="text-forest">Total:</span>
+                    <span className="text-forest">${cartTotal.toFixed(2)}</span>
                   </div>
                 </div>
-                <Button className="w-full mt-4 mom-green hover:bg-green-800">
+                <Button className="w-full mt-4 flora-rose hover:bg-pink-600">
                   Place Order
                 </Button>
               </div>
@@ -268,21 +266,21 @@ export default function MenuPage() {
                 />
                 <CardContent className="p-6">
                   <div className="flex justify-between items-start mb-2">
-                    <h3 className="text-xl font-semibold text-burgundy">{item.name}</h3>
+                    <h3 className="text-xl font-semibold text-forest">{item.name}</h3>
                     <div className="flex gap-1">
-                      {item.vegetarian && (
-                        <Badge variant="secondary" className="mom-green text-white">V</Badge>
+                      {item.seasonal && (
+                        <Badge variant="secondary" className="flora-sage text-forest">Seasonal</Badge>
                       )}
-                      {item.spicy && (
-                        <Badge variant="destructive">🌶️</Badge>
+                      {item.premium && (
+                        <Badge className="flora-rose text-white">Premium</Badge>
                       )}
                     </div>
                   </div>
-                  <p className="text-warm-brown mb-4 text-sm leading-relaxed">
+                  <p className="text-sage mb-4 text-sm leading-relaxed">
                     {item.description}
                   </p>
                   <div className="flex justify-between items-center">
-                    <span className="text-2xl font-bold text-burgundy">
+                    <span className="text-2xl font-bold text-forest">
                       ${item.price.toFixed(2)}
                     </span>
                     <div className="flex items-center gap-3">
@@ -292,11 +290,11 @@ export default function MenuPage() {
                             size="sm"
                             variant="outline"
                             onClick={() => removeFromCart(item.id)}
-                            className="border-burgundy text-burgundy hover:mom-burgundy hover:text-white"
+                            className="border-forest text-forest hover:flora-green hover:text-white"
                           >
                             <Minus size={16} />
                           </Button>
-                          <span className="text-lg font-semibold text-burgundy min-w-[20px] text-center">
+                          <span className="text-lg font-semibold text-forest min-w-[20px] text-center">
                             {quantity}
                           </span>
                         </>
@@ -304,7 +302,7 @@ export default function MenuPage() {
                       <Button
                         size="sm"
                         onClick={() => addToCart(item)}
-                        className="mom-burgundy hover:bg-red-800"
+                        className="flora-green hover:bg-green-800"
                       >
                         <Plus size={16} />
                       </Button>

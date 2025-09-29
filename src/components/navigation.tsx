@@ -10,18 +10,18 @@ const Navigation = () => {
 
   const navItems = [
     { name: 'Home', href: '/' },
-    { name: 'Menu', href: '/menu' },
+    { name: 'Arrangements', href: '/menu' },
     { name: 'About', href: '/about' },
     { name: 'Contact', href: '/contact' }
   ];
 
   return (
-    <header className="mom-burgundy sticky top-0 z-50 shadow-lg">
+    <header className="flora-green sticky top-0 z-50 shadow-lg">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           <Link href="/" className="flex items-center">
             <span className="font-script text-3xl font-bold text-white">
-              Mom's Spaghetti
+              Elegant Flora
             </span>
           </Link>
 
@@ -42,7 +42,7 @@ const Navigation = () => {
           <Button
             variant="ghost"
             size="icon"
-            className="md:hidden text-white hover:bg-red-800"
+            className="md:hidden text-white hover:bg-green-800"
             onClick={() => setIsOpen(!isOpen)}
           >
             {isOpen ? <X size={24} /> : <Menu size={24} />}
